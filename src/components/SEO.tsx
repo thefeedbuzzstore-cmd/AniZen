@@ -14,7 +14,7 @@ interface SEOProps {
 export default function SEO({
   title,
   description,
-  keywords = "anime, AniZen, anime trailers, catalog, ratings, episodes, reviews",
+  keywords = "anime, Aikennet, anime trailers, catalog, ratings, episodes, reviews",
   image = "/src/assets/images/anizen_app_icon_1779361257869.png",
   url,
   type = "website",
@@ -60,7 +60,7 @@ export default function SEO({
     keywordsMeta.setAttribute("content", keywords);
 
     const authorMeta = getOrCreateMeta("name", "author");
-    authorMeta.setAttribute("content", "AniZen Media Group");
+    authorMeta.setAttribute("content", "Aikennet Media Group");
 
     // 4. Robots Directives
     const robotsMeta = getOrCreateMeta("name", "robots");
@@ -85,7 +85,7 @@ export default function SEO({
     ogType.setAttribute("content", type);
 
     const ogSiteName = getOrCreateMeta("property", "og:site_name", true);
-    ogSiteName.setAttribute("content", "AniZen");
+    ogSiteName.setAttribute("content", "Aikennet");
 
     // 6. Twitter Meta Tags
     const twitterCard = getOrCreateMeta("name", "twitter:card");
@@ -114,7 +114,7 @@ export default function SEO({
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "AniZen",
+        "name": "Aikennet",
         "url": window.location.origin,
         "potentialAction": {
           "@type": "SearchAction",

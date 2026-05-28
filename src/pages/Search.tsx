@@ -43,6 +43,22 @@ const POPULAR_KEYWORDS = [
   "Attack on Titan"
 ];
 
+const DEFAULT_GENRES = [
+  { mal_id: 1, name: "Action" },
+  { mal_id: 2, name: "Adventure" },
+  { mal_id: 4, name: "Comedy" },
+  { mal_id: 8, name: "Drama" },
+  { mal_id: 10, name: "Fantasy" },
+  { mal_id: 24, name: "Sci-Fi" },
+  { mal_id: 22, name: "Romance" },
+  { mal_id: 37, name: "Supernatural" },
+  { mal_id: 7, name: "Mystery" },
+  { mal_id: 30, name: "Sports" },
+  { mal_id: 36, name: "Slice of Life" },
+  { mal_id: 14, name: "Horror" },
+  { mal_id: 19, name: "Music" }
+];
+
 export default function Search() {
   const { genreName } = useParams<{ genreName?: string }>();
   const location = useLocation();
@@ -50,7 +66,7 @@ export default function Search() {
 
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Anime[]>([]);
-  const [genres, setGenres] = useState<any[]>([]);
+  const [genres, setGenres] = useState<any[]>(DEFAULT_GENRES);
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
   const [loading, setLoading] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
@@ -78,9 +94,11 @@ export default function Search() {
     async function fetchGenres() {
       try {
         const data = await getGenres();
-        setGenres(data);
+        if (data && data.length > 0) {
+          setGenres(data);
+        }
       } catch (e) {
-        console.error("Failed to load genres:", e);
+        console.error("Failed to load genres, utilizing solid presets:", e);
       }
     }
     fetchGenres();
@@ -171,9 +189,9 @@ export default function Search() {
   useEffect(() => {
     const timer = setTimeout(() => {
       fetchResults();
-    }, mode === "search" ? 500 : 50);
+    }, 400);
     return () => clearTimeout(timer);
-  }, [fetchResults, mode]);
+  }, [fetchResults]);
 
   const toggleGenre = (genreId: number) => {
     setSelectedGenres(prev => 
@@ -198,16 +216,16 @@ export default function Search() {
   // SEO Info Generation
   const seoDetails = useMemo(() => {
     const defaultMeta = {
-      title: "AniZen – Search & Filter Anime Across the Multiverse",
+      title: "Aikennet – Search & Filter Anime Across the Multiverse",
       description: "Explore thousands of titles across the anime universe. Use advanced parameters like genres, season, year, rating, and score to discover your next epic saga.",
-      keywords: "search anime, anime catalog, discovery tool, genre filter, seasons tracker, anizen database",
+      keywords: "search anime, anime catalog, discovery tool, genre filter, seasons tracker, aikennet database",
       breadcrumbLabel: "Discovery"
     };
 
     if (mode === "trending") {
       return {
-        title: "Top Trending Anime - Global Popular Series Tracker | AniZen",
-        description: "Browse the absolute most popular, trending, and highly anticipated ongoing anime series streaming now internationally on AniZen.",
+        title: "Top Trending Anime - Global Popular Series Tracker | Aikennet",
+        description: "Browse the absolute most popular, trending, and highly anticipated ongoing anime series streaming now internationally on Aikennet.",
         keywords: "trending anime, popular series, seasonal anime, dynamic rankings, top active shows",
         breadcrumbLabel: "Trending"
       };
@@ -215,7 +233,7 @@ export default function Search() {
 
     if (mode === "top-rated") {
       return {
-        title: "Top Rated Anime of All Time - Highest Ranked Masterpieces | AniZen",
+        title: "Top Rated Anime of All Time - Highest Ranked Masterpieces | Aikennet",
         description: "Discover the highest-voted anime films and anime television series of all time indexed by ratings, scores, and review metrics.",
         keywords: "highest rated anime, top rated masterpieces, best anime of all time, community scores",
         breadcrumbLabel: "Top Rated"
@@ -225,7 +243,7 @@ export default function Search() {
     if (mode === "genre" && genreName) {
       const cleanGenre = genreName.charAt(0).toUpperCase() + genreName.slice(1).replace(/-/g, " ");
       return {
-        title: `Best ${cleanGenre} Anime - Ultimate ${cleanGenre} Series Database | AniZen`,
+        title: `Best ${cleanGenre} Anime - Ultimate ${cleanGenre} Series Database | Aikennet`,
         description: `Immerse yourself in our premier curation of the absolute best ${cleanGenre} anime series. Check official trailers, read community summaries, and track your metrics.`,
         keywords: `${cleanGenre} anime, best ${cleanGenre} action, dynamic anime, anime genre ${genreName}`,
         breadcrumbLabel: cleanGenre
@@ -275,12 +293,12 @@ export default function Search() {
   const faqData = useMemo(() => {
     return [
       {
-        question: "How do I filter anime on AniZen?",
+        question: "How do I filter anime on Aikennet?",
         answer: "You can click on the 'Filters' button to expand advanced parameter controls. Easily sort and narrow down selections by release year, season (e.g. spring or winter), age warnings (PG, R, R-17), genres, or minimum community review score."
       },
       {
-        question: "Does AniZen stream anime catalog items in full?",
-        answer: "AniZen is a premier tracking, media catalog discovery, and review community hub. Every anime details page includes official high-definition trailers and safe, verified streaming redirect buttons to affiliate platforms like Crunchyroll and Netflix where you can watch full episodes."
+        question: "Does Aikennet stream anime catalog items in full?",
+        answer: "Aikennet is a premier tracking, media catalog discovery, and review community hub. Every anime details page includes official high-definition trailers and safe, verified streaming redirect buttons to affiliate platforms like Crunchyroll and Netflix where you can watch full episodes."
       },
       {
         question: "How frequently are trending rankings updated?",
@@ -317,7 +335,7 @@ export default function Search() {
                 ? "The most hyped, talked about, and high-energy broadcasts streaming currently." 
                 : mode === "top-rated" 
                 ? "The pinnacle of the animation medium. Award-winning and masterpiece-classified runs." 
-                : `Custom filter catalog for ${seoDetails.breadcrumbLabel} on AniZen – your aesthetic media terminal.`}
+                : `Custom filter catalog for ${seoDetails.breadcrumbLabel} on Aikennet – your aesthetic media terminal.`}
             </p>
           </div>
           

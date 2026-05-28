@@ -20,7 +20,7 @@ export default function Hero({ anime }: HeroProps) {
       <div className="absolute inset-0">
         <img
           src={anime.images.jpg.large_image_url}
-          alt={`Featured epic background of anime series ${anime.title_english || anime.title} on AniZen`}
+          alt={`Featured epic background of anime series ${anime.title_english || anime.title} on Aikennet`}
           className="w-full h-full object-cover object-top scale-110 blur-[2px] opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-bg-dark via-bg-dark/20 to-transparent" />

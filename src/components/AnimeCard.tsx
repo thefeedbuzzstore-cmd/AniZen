@@ -23,7 +23,7 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
         <div className="aspect-[3/4] relative overflow-hidden">
           <img
             src={anime.images.jpg.large_image_url}
-            alt={`Official promotional cover poster of the anime ${anime.title_english || anime.title} on AniZen`}
+            alt={`Official promotional cover poster of the anime ${anime.title_english || anime.title} on Aikennet`}
             loading="lazy"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />

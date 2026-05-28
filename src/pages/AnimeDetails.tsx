@@ -370,8 +370,8 @@ export default function AnimeDetails() {
     <div className="pt-16 pb-20 overflow-x-hidden">
       {/* Meta Headers Injector */}
       <SEO 
-        title={`${seriesName} – Trailer, Ratings, Reviews & Streaming details | AniZen`}
-        description={`Watch ${seriesName} official trailer on AniZen. Rated ${anime.score}/10 with ${anime.episodes || "unlimited"} episodes. Follow schedules, read user review comments, and get details.`}
+        title={`${seriesName} – Trailer, Ratings, Reviews & Streaming details | Aikennet`}
+        description={`Watch ${seriesName} official trailer on Aikennet. Rated ${anime.score}/10 with ${anime.episodes || "unlimited"} episodes. Follow schedules, read user review comments, and get details.`}
         keywords={`${seriesName}, ${anime.title}, ${anime.title_english || ""}, watch ${seriesName} trailer, ratings, character lists, stream, synopsis`}
         image={anime.images.jpg.large_image_url}
         schema={[animeSchema, bSchema]}
@@ -406,7 +406,7 @@ export default function AnimeDetails() {
           >
             <img 
               src={anime.images.jpg.large_image_url} 
-              alt={`Official cover display for ${seriesName} on AniZen`} 
+              alt={`Official cover display for ${seriesName} on Aikennet`} 
               className="w-full h-full object-cover" 
               loading="eager"
             />
@@ -757,7 +757,7 @@ export default function AnimeDetails() {
             {[
               {
                 q: `Where can I watch ${seriesName} online?`,
-                a: `You can check active streaming redirect icons listed in the 'Where to Watch' widget above. AniZen acts as a premium discovery hub linking official channels like Crunchyroll, Netflix, Hulu, or Amazon Prime and tracking trailers.`
+                a: `You can check active streaming redirect icons listed in the 'Where to Watch' widget above. Aikennet acts as a premium discovery hub linking official channels like Crunchyroll, Netflix, Hulu, or Amazon Prime and tracking trailers.`
               },
               {
                 q: `How many episodes are there in ${seriesName}, and is it complete?`,

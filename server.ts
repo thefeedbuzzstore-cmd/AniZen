@@ -294,16 +294,16 @@ app.get("/api/admin/analytics/data", adminAuthMiddleware, (req, res) => {
 
   // GSC Top Queries Dataset
   const topQueriesList = [
-    { query: "anizen anime tracking", clicks: Math.round(gscClicks * 0.32), impressions: Math.round(gscImpressions * 0.28), ctr: "5.1%", position: 1.2 },
+    { query: "aikennet anime tracking", clicks: Math.round(gscClicks * 0.32), impressions: Math.round(gscImpressions * 0.28), ctr: "5.1%", position: 1.2 },
     { query: "watch fullmetal alchemist trailers", clicks: Math.round(gscClicks * 0.18), impressions: Math.round(gscImpressions * 0.15), ctr: "5.8%", position: 3.4 },
     { query: "best anime list minimalist", clicks: Math.round(gscClicks * 0.12), impressions: Math.round(gscImpressions * 0.19), ctr: "3.2%", position: 7.8 },
-    { query: "steins gate reviews anizen", clicks: Math.round(gscClicks * 0.09), impressions: Math.round(gscImpressions * 0.08), ctr: "5.5%", position: 2.1 },
+    { query: "steins gate reviews aikennet", clicks: Math.round(gscClicks * 0.09), impressions: Math.round(gscImpressions * 0.08), ctr: "5.5%", position: 2.1 },
     { query: "jujutsu kaisen air date online", clicks: Math.round(gscClicks * 0.07), impressions: Math.round(gscImpressions * 0.12), ctr: "2.8%", position: 14.5 }
   ];
 
   // Bing Keywords Dataset
   const bingKeywordsList = [
-    { keyword: "anizen website", clicks: Math.round(bingClicks * 0.35), impressions: Math.round(bingImpressions * 0.32), position: 1.4 },
+    { keyword: "aikennet website", clicks: Math.round(bingClicks * 0.35), impressions: Math.round(bingImpressions * 0.32), position: 1.4 },
     { keyword: "neon trailers anime collection", clicks: Math.round(bingClicks * 0.22), impressions: Math.round(bingImpressions * 0.24), position: 4.1 },
     { keyword: "one piece scheduling logs", clicks: Math.round(bingClicks * 0.15), impressions: Math.round(bingImpressions * 0.12), position: 2.8 }
   ];

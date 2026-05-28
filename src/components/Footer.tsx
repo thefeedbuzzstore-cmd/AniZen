@@ -13,12 +13,12 @@ export default function Footer() {
               <div className="w-10 h-10 rounded-full bg-white p-0.5 border border-white/20 hover:border-brand/45 shadow-lg shadow-brand/10 transition-all duration-300 flex items-center justify-center">
                 <img 
                   src={brandLogo} 
-                  alt="AniZen Logo" 
+                  alt="Aikennet Logo" 
                   className="w-full h-full object-contain rounded-full transform hover:scale-110 transition-transform duration-300" 
                   referrerPolicy="no-referrer" 
                 />
               </div>
-              <span className="text-xl font-display font-bold tracking-tight text-white">AniZen</span>
+              <span className="text-xl font-display font-bold tracking-tight text-white">Aikennet</span>
             </Link>
             <p className="text-gray-500 max-w-sm leading-relaxed mb-6">
               The ultimate destination for anime fans. Discover new worlds, 
@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-600 font-bold uppercase tracking-widest">
-          <p>© 2026 AniZen Media. Powered by AI and the Community.</p>
+          <p>© 2026 Aikennet Media. Powered by AI and the Community.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">Privacy</a>
             <a href="#" className="hover:text-white transition-colors">Terms</a>

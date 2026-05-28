@@ -628,7 +628,7 @@ export default function AnalyticsSEOSection() {
             <div className="flex justify-between items-center mb-6">
               <div>
                 <h3 className={cn("font-bold text-base", isLight ? "text-stone-900" : "text-white")}>Geographical Distribution</h3>
-                <p className="text-xs text-zinc-500">Top user locations accessing AniZen.</p>
+                <p className="text-xs text-zinc-500">Top user locations accessing Aikennet.</p>
               </div>
               <Map className="w-5 h-5 text-zinc-500" />
             </div>

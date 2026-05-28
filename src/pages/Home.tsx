@@ -41,9 +41,9 @@ export default function Home() {
     <div className="pb-20 bg-main-dark bg-grid-pattern min-h-screen">
       {/* Home SEO Dynamic Targets */}
       <SEO 
-        title="AniZen – Watch Anime Trailers, Ratings & Discover New Anime"
-        description="Welcome to AniZen. Discover the top trending anime series, ongoing seasonal simulcasts, and critically acclaimed masterpieces. Watch trailers and generate AI reviews."
-        keywords="AniZen, watch trailers, ratings, air schedules, review database, MyAnimeList data syncing, AI anime summaries, watch anime, trending action"
+        title="Aikennet – Watch Anime Trailers, Ratings & Discover New Anime"
+        description="Welcome to Aikennet. Discover the top trending anime series, ongoing seasonal simulcasts, and critically acclaimed masterpieces. Watch trailers and generate AI reviews."
+        keywords="Aikennet, watch trailers, ratings, air schedules, review database, MyAnimeList data syncing, AI anime summaries, watch anime, trending action"
       />
 
       {trendingAnime && <Hero anime={trendingAnime} />}
@@ -68,13 +68,13 @@ export default function Home() {
               <Link
                 key={g.slug}
                 to={`/genre/${g.slug}`}
-                className={`p-6 rounded-2xl bg-zinc-900 border border-white/5 hover:scale-102 flex flex-col justify-between h-32 transition-all group hover:bg-gradient-to-br ${g.color}`}
+                className={`p-4 rounded-xl bg-zinc-900 border border-white/5 hover:scale-[1.03] hover:shadow-lg active:scale-95 flex flex-col justify-between h-24 transition-all duration-300 group hover:bg-gradient-to-br ${g.color}`}
               >
                 <div className="flex justify-between items-center">
-                  <span className="text-[9px] font-black uppercase tracking-widest text-zinc-600 group-hover:text-zinc-400">Discover</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-600 group-hover:text-white transition-colors" />
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-zinc-500 group-hover:text-zinc-300 transition-colors">Discover</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors" />
                 </div>
-                <span className="text-lg font-black uppercase text-white tracking-wider group-hover:translate-x-1 transition-transform">{g.name}</span>
+                <span className="text-sm font-bold uppercase text-white tracking-wider group-hover:translate-x-1 transition-transform">{g.name}</span>
               </Link>
             ))}
           </div>
@@ -143,7 +143,7 @@ export default function Home() {
             <span className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest block mb-4">Membership</span>
             <h2 className="text-4xl md:text-6xl font-display font-black text-white mb-6 tracking-tighter leading-none uppercase">Elevate Your Log.</h2>
             <p className="text-zinc-500 max-w-xl mb-10 text-lg leading-relaxed">
-              Unlock the full potential of AniZen. Stream high-fidelity promotional clips, save infinite collections, 
+              Unlock the full potential of Aikennet. Stream high-fidelity promotional clips, save infinite collections, 
               write community review logs, and curate your custom avatar standing in the multiverse.
             </p>
             <div className="flex flex-wrap gap-4">

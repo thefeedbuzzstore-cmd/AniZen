@@ -25,12 +25,12 @@ export default function Navbar() {
               <div className="w-10 h-10 rounded-full bg-white p-0.5 border border-white/20 hover:border-brand/45 shadow-lg shadow-brand/10 transition-all duration-300 flex items-center justify-center">
                 <img 
                   src={brandLogo} 
-                  alt="AniZen Logo" 
+                  alt="Aikennet Logo" 
                   className="w-full h-full object-contain rounded-full transform hover:scale-110 transition-transform duration-300" 
                   referrerPolicy="no-referrer" 
                 />
               </div>
-              <span className="text-xl font-display font-bold tracking-tight text-gradient">AniZen</span>
+              <span className="text-xl font-display font-bold tracking-tight text-gradient">Aikennet</span>
             </Link>
             
             <div className="hidden md:flex items-center gap-6">
@@ -61,7 +61,7 @@ export default function Navbar() {
                   <Link to="/profile" className="w-8 h-8 rounded-full overflow-hidden border border-white/20 hover:border-brand transition-all">
                     <img src={profile?.avatarUrl || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.uid}`} alt="Profile" className="w-full h-full object-cover" />
                   </Link>
-                  <button onClick={handleLogout} className="p-2 text-gray-300 hover:text-red-400 transition-colors">
+                  <button onClick={handleLogout} className="p-2 text-gray-300 hover:text-red-400 transition-colors" aria-label="Sign Out">
                     <LogOut className="w-5 h-5" />
                   </button>
                 </div>
@@ -74,7 +74,12 @@ export default function Navbar() {
           </div>
 
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-gray-300">
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className="p-2 text-gray-300 cursor-pointer" 
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isOpen}
+            >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
