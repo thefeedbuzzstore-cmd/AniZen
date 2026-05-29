@@ -46,11 +46,7 @@ export default function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/admin-login" element={<AdminLogin />} />
                 
-                <Route path="/favorites" element={
-                  <ProtectedRoute>
-                    <Favorites />
-                  </ProtectedRoute>
-                } />
+                <Route path="/favorites" element={<Favorites />} />
                 
                 <Route path="/profile" element={
                   <ProtectedRoute>
@@ -58,11 +54,7 @@ export default function App() {
                   </ProtectedRoute>
                 } />
                 
-                <Route path="/lists" element={
-                  <ProtectedRoute>
-                    <Lists />
-                  </ProtectedRoute>
-                } />
+                <Route path="/lists" element={<Lists />} />
                 
                 <Route path="/admin-dashboard" element={
                   <ProtectedRoute allowedRoles={["admin", "moderator"]}>

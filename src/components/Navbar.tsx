@@ -36,12 +36,8 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-6">
               <Link to="/" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Home</Link>
               <Link to="/search" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Browse</Link>
-              {user && (
-                <>
-                  <Link to="/favorites" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Favorites</Link>
-                  <Link to="/lists" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Collections</Link>
-                </>
-              )}
+              <Link to="/favorites" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Favorites</Link>
+              <Link to="/lists" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Collections</Link>
             </div>
           </div>
 
@@ -98,15 +94,15 @@ export default function Navbar() {
             <div className="px-4 pt-2 pb-6 space-y-4">
               <Link to="/" onClick={() => setIsOpen(false)} className="block text-base font-medium text-gray-300">Home</Link>
               <Link to="/search" onClick={() => setIsOpen(false)} className="block text-base font-medium text-gray-300">Browse</Link>
+              <Link to="/favorites" onClick={() => setIsOpen(false)} className="block text-base font-medium text-gray-300">Favorites</Link>
+              <Link to="/lists" onClick={() => setIsOpen(false)} className="block text-base font-medium text-gray-300">Collections</Link>
               {user && (
                 <>
-                  <Link to="/favorites" onClick={() => setIsOpen(false)} className="block text-base font-medium text-gray-300">Favorites</Link>
-                  <Link to="/lists" onClick={() => setIsOpen(false)} className="block text-base font-medium text-gray-300">Collections</Link>
                   <Link to="/profile" onClick={() => setIsOpen(false)} className="block text-base font-medium text-gray-300">Profile</Link>
                   {(profile?.role === "admin" || profile?.role === "moderator") && (
                     <Link to="/admin-dashboard" onClick={() => setIsOpen(false)} className="block text-base font-medium text-gray-300">Control Panel</Link>
                   )}
-                  <button onClick={handleLogout} className="block w-full text-left text-base font-medium text-red-400">Logout</button>
+                  <button onClick={handleLogout} className="block w-full text-left text-base font-medium text-red-400 font-bold">Logout</button>
                 </>
               )}
               {!user && (

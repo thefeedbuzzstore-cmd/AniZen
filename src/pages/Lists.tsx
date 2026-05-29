@@ -10,7 +10,8 @@ import {
   List as ListIcon, 
   MoreVertical,
   Edit,
-  Share2
+  Share2,
+  Loader2
 } from "lucide-react";
 import { 
   collection, 
@@ -29,15 +30,19 @@ import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
 
 export default function Lists() {
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const [lists, setLists] = useState<any[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newListName, setNewListName] = useState("");
   const [newListDesc, setNewListDesc] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [dbLoading, setDbLoading] = useState(true);
 
   useEffect(() => {
-    if (!user) return;
+    if (authLoading) return;
+    if (!user) {
+      setDbLoading(false);
+      return;
+    }
     async function fetchLists() {
       try {
         const q = query(collection(db, "lists"), where("userId", "==", user.uid), orderBy("createdAt", "desc"));
@@ -46,11 +51,11 @@ export default function Lists() {
       } catch (e) {
         console.error(e);
       } finally {
-        setLoading(false);
+        setDbLoading(false);
       }
     }
     fetchLists();
-  }, [user]);
+  }, [user, authLoading]);
 
   const createList = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -91,7 +96,30 @@ export default function Lists() {
     }
   };
 
-  if (loading) return null;
+  if (authLoading || dbLoading) {
+    return (
+      <div className="h-screen w-full flex items-center justify-center bg-bg-dark">
+        <Loader2 className="w-10 h-10 text-brand animate-spin" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center min-h-[60vh]">
+        <div className="p-4 bg-brand/10 text-brand rounded-full mb-6">
+          <ListIcon className="w-12 h-12" />
+        </div>
+        <h2 className="text-3xl font-display font-black text-white mb-3 uppercase tracking-tight">Authentication Required</h2>
+        <p className="text-gray-500 max-w-md mb-8 leading-relaxed">
+          Sign in to access your custom collections, save your favorite anime shows, and sync your dynamic watch logs.
+        </p>
+        <Link to="/login" className="px-8 py-4 bg-brand hover:bg-brand-light text-white font-bold rounded-2xl transition-all shadow-xl neon-glow">
+          Sign In to Aikennet
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
