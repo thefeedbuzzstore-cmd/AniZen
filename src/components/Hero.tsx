@@ -27,14 +27,18 @@ export default function Hero({ anime }: HeroProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-transparent to-transparent" />
       </div>
 
-      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center pt-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="max-w-2xl"
         >
-          <div className="flex items-center gap-3 mb-4">
+          <h1 className="text-5xl md:text-8xl font-display font-black text-gradient leading-[0.9] mb-4 tracking-tighter">
+            {anime.title_english || anime.title}
+          </h1>
+
+          <div className="flex items-center gap-3 mb-6">
             <span className="px-3 py-1 bg-white/5 text-zinc-100 text-[10px] font-bold rounded-lg border border-white/10 uppercase tracking-widest shadow-xl">
               Trending Discovery
             </span>
@@ -43,10 +47,6 @@ export default function Hero({ anime }: HeroProps) {
               <span className="text-sm font-bold">{anime.score} Score</span>
             </div>
           </div>
-          
-          <h1 className="text-5xl md:text-8xl font-display font-black text-gradient leading-[0.9] mb-8 tracking-tighter">
-            {anime.title_english || anime.title}
-          </h1>
           
           <p className="text-zinc-400 text-lg mb-10 line-clamp-3 max-w-xl leading-relaxed">
             {anime.synopsis}
