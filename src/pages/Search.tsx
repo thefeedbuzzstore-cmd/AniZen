@@ -344,10 +344,12 @@ export default function Search() {
             <div className="relative flex-grow sm:w-80">
               <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
               <input
+                id="search-title"
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search by title..."
+                aria-label="Search by anime title"
                 className="w-full bg-card-dark border border-white/10 rounded-2xl py-3.5 pl-12 pr-4 text-white focus:outline-none focus:border-brand transition-all shadow-xl placeholder:text-gray-600 font-semibold"
               />
               
@@ -447,8 +449,9 @@ export default function Search() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {/* Season */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Season</label>
+                    <label htmlFor="filter-season" className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Season</label>
                     <select 
+                      id="filter-season"
                       value={season} 
                       onChange={(e) => setSeason(e.target.value)}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand transition-all appearance-none cursor-pointer font-bold"
@@ -460,8 +463,9 @@ export default function Search() {
 
                   {/* Year */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Year</label>
+                    <label htmlFor="filter-year" className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Year</label>
                     <input 
+                      id="filter-year"
                       type="number" 
                       placeholder="e.g. 2024"
                       value={year}
@@ -472,8 +476,9 @@ export default function Search() {
 
                   {/* Status */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Status</label>
+                    <label htmlFor="filter-status" className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Status</label>
                     <select 
+                      id="filter-status"
                       value={status} 
                       onChange={(e) => setStatus(e.target.value)}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand transition-all appearance-none cursor-pointer font-bold"
@@ -485,8 +490,9 @@ export default function Search() {
 
                   {/* Min Score */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Min Score ({minScore || '0'})</label>
+                    <label htmlFor="filter-minscore" className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">Min Score ({minScore || '0'})</label>
                     <input 
+                      id="filter-minscore"
                       type="range" 
                       min="0" 
                       max="10" 

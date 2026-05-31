@@ -26,6 +26,8 @@ export default function Navbar() {
                 <img 
                   src={brandLogo} 
                   alt="Aikennet Logo" 
+                  width="40"
+                  height="40"
                   className="w-full h-full object-contain rounded-full transform hover:scale-110 transition-transform duration-300" 
                   referrerPolicy="no-referrer" 
                 />
@@ -42,7 +44,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <Link to="/search" className="p-2 text-gray-300 hover:text-white transition-colors">
+            <Link to="/search" className="p-2 text-gray-300 hover:text-white transition-colors" aria-label="Search and browse anime catalog">
               <Search className="w-5 h-5" />
             </Link>
             
@@ -54,8 +56,15 @@ export default function Navbar() {
                   </Link>
                 )}
                 <div className="flex items-center gap-2 pl-4 border-l border-white/10">
-                  <Link to="/profile" className="w-8 h-8 rounded-full overflow-hidden border border-white/20 hover:border-brand transition-all">
-                    <img src={profile?.avatarUrl || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.uid}`} alt="Profile" className="w-full h-full object-cover" />
+                  <Link to="/profile" className="w-8 h-8 rounded-full overflow-hidden border border-white/20 hover:border-brand transition-all flex items-center justify-center">
+                    <img 
+                      src={profile?.avatarUrl || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.uid}`} 
+                      alt="Your profile settings and avatar" 
+                      width="32"
+                      height="32"
+                      decoding="async"
+                      className="w-full h-full object-cover" 
+                    />
                   </Link>
                   <button onClick={handleLogout} className="p-2 text-gray-300 hover:text-red-400 transition-colors" aria-label="Sign Out">
                     <LogOut className="w-5 h-5" />

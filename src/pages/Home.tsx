@@ -3,37 +3,31 @@ import Hero from "../components/Hero";
 import AnimeCard from "../components/AnimeCard";
 import SEO from "../components/SEO";
 import { getTopAnime, getRecentAnime, Anime } from "../services/animeApi";
+import { PRELOADED_TOP_ANIME, PRELOADED_RECENT_ANIME } from "../services/preloadedAnime";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Loader2, TrendingUp, Sparkles, Calendar, ArrowUpRight } from "lucide-react";
 
 export default function Home() {
-  const [topAnime, setTopAnime] = useState<Anime[]>([]);
-  const [recentAnime, setRecentAnime] = useState<Anime[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [topAnime, setTopAnime] = useState<Anime[]>(PRELOADED_TOP_ANIME);
+  const [recentAnime, setRecentAnime] = useState<Anime[]>(PRELOADED_RECENT_ANIME);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const [top, recent] = await Promise.all([getTopAnime(), getRecentAnime()]);
-        setTopAnime(top);
-        setRecentAnime(recent);
+        if (top && top.length > 0) {
+          setTopAnime(top);
+        }
+        if (recent && recent.length > 0) {
+          setRecentAnime(recent);
+        }
       } catch (error) {
         console.error("Failed to fetch anime data:", error);
-      } finally {
-        setLoading(false);
       }
     }
     fetchData();
   }, []);
-
-  if (loading) {
-    return (
-      <div className="h-screen w-full flex items-center justify-center bg-bg-dark text-white">
-        <Loader2 className="w-12 h-12 animate-spin text-brand" />
-      </div>
-    );
-  }
 
   const trendingAnime = topAnime[0];
 
@@ -53,7 +47,7 @@ export default function Home() {
         {/* Dynamic Genre Spotlight Cards for SEO and Easy Navigation */}
         <section>
           <div className="flex flex-col mb-10">
-            <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-2">Aesthetic Discovery</span>
+            <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-2">Aesthetic Discovery</span>
             <h2 className="text-4xl font-display font-black text-white tracking-tight uppercase">Spotlight Genres</h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -70,9 +64,9 @@ export default function Home() {
                 to={`/genre/${g.slug}`}
                 className={`p-4 rounded-xl bg-zinc-900 border border-white/5 hover:scale-[1.03] hover:shadow-lg active:scale-95 flex flex-col justify-between h-24 transition-all duration-300 group hover:bg-gradient-to-br ${g.color}`}
               >
-                <div className="flex justify-between items-center">
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-zinc-500 group-hover:text-zinc-300 transition-colors">Discover</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors" />
+            <div className="flex justify-between items-center">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-300 transition-colors">Discover</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white transition-colors" />
                 </div>
                 <span className="text-sm font-bold uppercase text-white tracking-wider group-hover:translate-x-1 transition-transform">{g.name}</span>
               </Link>
@@ -84,10 +78,10 @@ export default function Home() {
         <section>
           <div className="flex items-center justify-between mb-10">
             <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-2">Prime Selections</span>
+              <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-2">Prime Selections</span>
               <h2 className="text-4xl font-display font-black text-white tracking-tight uppercase">Critically Acclaimed</h2>
             </div>
-            <Link to="/top-rated" className="text-zinc-500 hover:text-brand text-xs font-bold uppercase tracking-widest border-b border-zinc-800 hover:border-brand transition-colors pb-1 flex items-center gap-1">
+            <Link to="/top-rated" className="text-zinc-400 hover:text-brand text-xs font-bold uppercase tracking-widest border-b border-zinc-800 hover:border-brand transition-colors pb-1 flex items-center gap-1">
               Top Rated <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -110,10 +104,10 @@ export default function Home() {
         <section>
           <div className="flex items-center justify-between mb-10">
             <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-2">Active Simulcasts</span>
+              <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-2">Active Simulcasts</span>
               <h2 className="text-4xl font-display font-black text-white tracking-tight uppercase">Trending Broadcasts</h2>
             </div>
-            <Link to="/trending" className="text-zinc-500 hover:text-brand text-xs font-bold uppercase tracking-widest border-b border-zinc-800 hover:border-brand transition-colors pb-1 flex items-center gap-1">
+            <Link to="/trending" className="text-zinc-400 hover:text-brand text-xs font-bold uppercase tracking-widest border-b border-zinc-800 hover:border-brand transition-colors pb-1 flex items-center gap-1">
               View All <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -140,9 +134,9 @@ export default function Home() {
           </div>
           
           <div className="relative z-10">
-            <span className="text-[10px] uppercase font-bold text-zinc-500 tracking-widest block mb-4">Membership</span>
+            <span className="text-[10px] uppercase font-bold text-zinc-400 tracking-widest block mb-4">Membership</span>
             <h2 className="text-4xl md:text-6xl font-display font-black text-white mb-6 tracking-tighter leading-none uppercase">Elevate Your Log.</h2>
-            <p className="text-zinc-500 max-w-xl mb-10 text-lg leading-relaxed">
+            <p className="text-zinc-400 max-w-xl mb-10 text-lg leading-relaxed">
               Unlock the full potential of Aikennet. Stream high-fidelity promotional clips, save infinite collections, 
               write community review logs, and curate your custom avatar standing in the multiverse.
             </p>

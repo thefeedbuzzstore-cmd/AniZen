@@ -14,47 +14,49 @@ export default function Footer() {
                 <img 
                   src={brandLogo} 
                   alt="Aikennet Logo" 
+                  width="40"
+                  height="40"
                   className="w-full h-full object-contain rounded-full transform hover:scale-110 transition-transform duration-300" 
                   referrerPolicy="no-referrer" 
                 />
               </div>
               <span className="text-xl font-display font-bold tracking-tight text-white">Aikennet</span>
             </Link>
-            <p className="text-gray-500 max-w-sm leading-relaxed mb-6">
+            <p className="text-zinc-400 max-w-sm leading-relaxed mb-6">
               The ultimate destination for anime fans. Discover new worlds, 
               join the discussion, and experience the multiverse of animation 
               like never before.
             </p>
             <div className="flex gap-4">
-              <SocialLink icon={Twitter} />
-              <SocialLink icon={Youtube} />
-              <SocialLink icon={Instagram} />
-              <SocialLink icon={Github} />
+              <SocialLink icon={Twitter} ariaLabel="Visit Aikennet on Twitter" />
+              <SocialLink icon={Youtube} ariaLabel="Visit Aikennet on YouTube" />
+              <SocialLink icon={Instagram} ariaLabel="Visit Aikennet on Instagram" />
+              <SocialLink icon={Github} ariaLabel="Visit our Github repository" />
             </div>
           </div>
           
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-6">Explore</h4>
             <ul className="space-y-4">
-              <li><Link to="/" className="text-gray-500 hover:text-brand transition-colors text-sm">Top Rated</Link></li>
-              <li><Link to="/search" className="text-gray-500 hover:text-brand transition-colors text-sm">New Seasons</Link></li>
-              <li><Link to="/search" className="text-gray-500 hover:text-brand transition-colors text-sm">Browse Genres</Link></li>
-              <li><Link to="/search" className="text-gray-500 hover:text-brand transition-colors text-sm">Special Offers</Link></li>
+              <li><Link to="/" className="text-zinc-400 hover:text-brand transition-colors text-sm">Top Rated</Link></li>
+              <li><Link to="/search" className="text-zinc-400 hover:text-brand transition-colors text-sm">New Seasons</Link></li>
+              <li><Link to="/search" className="text-zinc-400 hover:text-brand transition-colors text-sm">Browse Genres</Link></li>
+              <li><Link to="/search" className="text-zinc-400 hover:text-brand transition-colors text-sm">Special Offers</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-6">Support</h4>
             <ul className="space-y-4">
-              <li><Link to="/admin-login" className="text-gray-500 hover:text-brand transition-colors text-sm">Admin Portal</Link></li>
-              <li><a href="#" className="text-gray-500 hover:text-brand transition-colors text-sm">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-500 hover:text-brand transition-colors text-sm">Terms of Use</a></li>
-              <li><a href="#" className="text-gray-500 hover:text-brand transition-colors text-sm">Cookie Settings</a></li>
+              <li><Link to="/admin-login" className="text-zinc-400 hover:text-brand transition-colors text-sm">Admin Portal</Link></li>
+              <li><a href="#" className="text-zinc-400 hover:text-brand transition-colors text-sm">Privacy Policy</a></li>
+              <li><a href="#" className="text-zinc-400 hover:text-brand transition-colors text-sm">Terms of Use</a></li>
+              <li><a href="#" className="text-zinc-400 hover:text-brand transition-colors text-sm">Cookie Settings</a></li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-600 font-bold uppercase tracking-widest">
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-zinc-400 font-bold uppercase tracking-widest">
           <p>© 2026 Aikennet Media. Powered by AI and the Community.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">Privacy</a>
@@ -67,9 +69,9 @@ export default function Footer() {
   );
 }
 
-function SocialLink({ icon: Icon }: { icon: any }) {
+function SocialLink({ icon: Icon, ariaLabel }: { icon: any; ariaLabel: string }) {
   return (
-    <a href="#" className="w-10 h-10 glass rounded-xl flex items-center justify-center text-gray-400 hover:text-brand hover:border-brand/40 transition-all">
+    <a href="#" aria-label={ariaLabel} className="w-10 h-10 glass rounded-xl flex items-center justify-center text-gray-400 hover:text-brand hover:border-brand/40 transition-all">
       <Icon className="w-5 h-5" />
     </a>
   );

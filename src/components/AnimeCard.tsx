@@ -25,6 +25,9 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
             src={anime.images.jpg.large_image_url}
             alt={`Official promotional cover poster of the anime ${anime.title_english || anime.title} on Aikennet`}
             loading="lazy"
+            decoding="async"
+            width="225"
+            height="318"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
@@ -45,7 +48,7 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
           <h3 className="text-sm font-semibold text-zinc-100 truncate group-hover:text-brand transition-colors">
             {anime.title_english || anime.title}
           </h3>
-          <div className="mt-1 flex items-center gap-2 text-[10px] text-zinc-500 font-bold uppercase tracking-wider">
+          <div className="mt-1 flex items-center gap-2 text-[10px] text-zinc-400 font-bold uppercase tracking-wider">
             <span>{anime.year || anime.status}</span>
             <span className="w-1 h-1 rounded-full bg-zinc-700"></span>
             <span>{anime.episodes ? `${anime.episodes} Eps` : 'Ongoing'}</span>
